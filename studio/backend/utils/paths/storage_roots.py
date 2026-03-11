@@ -64,6 +64,21 @@ def ensure_dir(path: Path) -> Path:
     path.mkdir(parents = True, exist_ok = True)
     return path
 
+def ensure_studio_directories() -> None:
+    """Create all standard studio directories on startup."""
+    for dir_fn in (
+        studio_root,
+        assets_root,
+        datasets_root,
+        dataset_uploads_root,
+        recipe_datasets_root,
+        outputs_root,
+        exports_root,
+        auth_root,
+        tensorboard_root,
+    ):
+        ensure_dir(dir_fn())
+
 
 def _clean_relative_path(
     path_value: str, *, strip_prefixes: tuple[str, ...] = ()
