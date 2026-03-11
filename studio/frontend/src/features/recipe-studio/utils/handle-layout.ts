@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
-// Copyright © 2025 Unsloth AI
+// Copyright 2026-present the Unsloth AI Inc. team. All rights reserved.
 
 export const NODE_HANDLE_CLASS =
   "pointer-events-auto !size-2.5 !border-border/80 !bg-muted shadow-sm hover:!border-primary/70 hover:!bg-primary/20";

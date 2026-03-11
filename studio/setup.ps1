@@ -1,6 +1,6 @@
 #Requires -Version 5.1
 # SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
-# Copyright © 2025 Unsloth AI
+# Copyright 2026-present the Unsloth AI Inc. team. All rights reserved.
 <#
 .SYNOPSIS
     Full environment setup for Unsloth Studio on Windows (bundled version).

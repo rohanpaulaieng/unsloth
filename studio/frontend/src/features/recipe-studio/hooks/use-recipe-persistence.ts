@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
-// Copyright © 2025 Unsloth AI
+// Copyright 2026-present the Unsloth AI Inc. team. All rights reserved.
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toastError, toastSuccess } from "@/shared/toast";
