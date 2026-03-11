@@ -177,7 +177,7 @@ def install_python_stack() -> int:
 
     # 2. Core packages: unsloth-zoo + unsloth
     pip_install(
-        "Installing unsloth-zoo + unsloth",
+        "Installing base packages",
         "--no-cache-dir",
         req = REQ_ROOT / "base.txt",
     )
@@ -199,7 +199,7 @@ def install_python_stack() -> int:
 
     # 4. Overrides (torchao, transformers) — force-reinstall
     pip_install(
-        "Installing torchao + transformers overrides",
+        "Installing dependency overrides",
         "--force-reinstall",
         "--no-cache-dir",
         req = REQ_ROOT / "overrides.txt",
@@ -214,26 +214,26 @@ def install_python_stack() -> int:
         constrain = False,
     )
 
-    # 6. Patch: override llama_cpp.py with fix from unsloth-zoo  feature/llama-cpp-windows-support branch
-    patch_package_file(
-        "unsloth-zoo",
-        os.path.join("unsloth_zoo", "llama_cpp.py"),
-        "https://raw.githubusercontent.com/unslothai/unsloth-zoo/refs/heads/main/unsloth_zoo/llama_cpp.py",
-    )
+    # # 6. Patch: override llama_cpp.py with fix from unsloth-zoo  feature/llama-cpp-windows-support branch
+    # patch_package_file(
+    #     "unsloth-zoo",
+    #     os.path.join("unsloth_zoo", "llama_cpp.py"),
+    #     "https://raw.githubusercontent.com/unslothai/unsloth-zoo/refs/heads/main/unsloth_zoo/llama_cpp.py",
+    # )
 
-    # 7a. Patch: override vision.py with fix from unsloth PR #4091
-    patch_package_file(
-        "unsloth",
-        os.path.join("unsloth", "models", "vision.py"),
-        "https://raw.githubusercontent.com/unslothai/unsloth/80e0108a684c882965a02a8ed851e3473c1145ab/unsloth/models/vision.py",
-    )
+    # # 7a. Patch: override vision.py with fix from unsloth PR #4091
+    # patch_package_file(
+    #     "unsloth",
+    #     os.path.join("unsloth", "models", "vision.py"),
+    #     "https://raw.githubusercontent.com/unslothai/unsloth/80e0108a684c882965a02a8ed851e3473c1145ab/unsloth/models/vision.py",
+    # )
 
-    # 7b. Patch : override save.py with fix from feature/llama-cpp-windows-support
-    patch_package_file(
-        "unsloth",
-        os.path.join("unsloth", "save.py"),
-        "https://raw.githubusercontent.com/unslothai/unsloth/refs/heads/main/unsloth/save.py",
-    )
+    # # 7b. Patch : override save.py with fix from feature/llama-cpp-windows-support
+    # patch_package_file(
+    #     "unsloth",
+    #     os.path.join("unsloth", "save.py"),
+    #     "https://raw.githubusercontent.com/unslothai/unsloth/refs/heads/main/unsloth/save.py",
+    # )
 
     # 8. Studio dependencies
     pip_install(
@@ -244,7 +244,7 @@ def install_python_stack() -> int:
 
     # 9. Data-designer dependencies
     pip_install(
-        "Installing data-designer dependencies",
+        "Installing data-designer base dependencies",
         "--no-cache-dir",
         req = SINGLE_ENV / "data-designer-deps.txt",
     )
