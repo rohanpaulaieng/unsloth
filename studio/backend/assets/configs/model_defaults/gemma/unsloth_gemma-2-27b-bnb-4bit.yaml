@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/gemma-2-27b-bnb-4bit
 # Based on Gemma2_(9B)-Alpaca.ipynb (same defaults for larger models)
 

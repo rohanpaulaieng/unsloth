@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Data Designer runtime deps installed explicitly (single-env mode).
 # DuckDB 1.5 removed Relation.record_batch(); keep <1.5 until upstream ships the fix.
 anyascii<1,>=0.3.3

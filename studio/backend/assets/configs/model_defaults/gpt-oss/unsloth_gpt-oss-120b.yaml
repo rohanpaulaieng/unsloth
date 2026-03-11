@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/gpt-oss-120b
 # Based on gpt-oss-(120B)_A100-Fine-tuning.ipynb
 # Also applies to: openai/gpt-oss-120b, unsloth/gpt-oss-120b-unsloth-bnb-4bit

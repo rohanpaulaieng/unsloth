@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/Qwen2.5-Coder-1.5B-Instruct
 # Based on Qwen2.5_Coder_(1.5B)-Tool_Calling.ipynb
 # Also applies to: unsloth/Qwen2.5-Coder-1.5B-Instruct-bnb-4bit, Qwen/Qwen2.5-Coder-1.5B-Instruct

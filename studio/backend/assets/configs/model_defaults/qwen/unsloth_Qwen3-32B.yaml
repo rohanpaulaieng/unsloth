@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/Qwen3-32B
 # Based on Qwen3_(32B)_A100-Reasoning-Conversational.ipynb
 # Also applies to: unsloth/Qwen3-32B-unsloth-bnb-4bit, Qwen/Qwen3-32B, unsloth/Qwen3-32B-bnb-4bit, Qwen/Qwen3-32B-FP8, unsloth/Qwen3-32B-FP8

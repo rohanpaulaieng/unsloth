@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Install Data Designer in same env as Unsloth.
 data-designer==0.5.2
 data-designer-config==0.5.2

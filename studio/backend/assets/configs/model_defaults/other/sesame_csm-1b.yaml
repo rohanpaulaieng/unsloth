@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for sesame/csm-1b
 # Based on Sesame_CSM_(1B)-TTS.ipynb
 # Also applies to: sesame/csm-1b

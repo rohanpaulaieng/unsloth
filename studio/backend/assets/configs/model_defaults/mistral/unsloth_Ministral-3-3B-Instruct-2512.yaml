@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/Ministral-3-3B-Instruct-2512
 # Based on Ministral_3_VL_(3B)_Vision.ipynb
 # Also applies to: unsloth/Ministral-3-3B-Instruct-2512

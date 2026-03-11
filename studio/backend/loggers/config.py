@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 """Logging configuration for structured logging with structlog.
 
 This module provides centralized logging configuration with environment-specific

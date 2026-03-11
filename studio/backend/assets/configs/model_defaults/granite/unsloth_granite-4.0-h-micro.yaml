@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/granite-4.0-h-micro
 # Based on Granite4.0.ipynb
 # Also applies to: ibm-granite/granite-4.0-h-micro, unsloth/granite-4.0-h-micro-bnb-4bit, unsloth/granite-4.0-h-micro-unsloth-bnb-4bit

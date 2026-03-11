@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/llama-3-8b-Instruct-bnb-4bit
 # Based on Llama3_(8B)-Conversational.ipynb
 # Also applies to: unsloth/llama-3-8b-Instruct, meta-llama/Meta-Llama-3-8B-Instruct

@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/GLM-4.7-Flash
 # Based on GLM_Flash_A100(80GB).py
 # Also applies to: unsloth/GLM-4.7-Flash-unsloth-bnb-4bit, unsloth/GLM-4.7-Flash-bnb-4bit, THUDM/GLM-4.7-Flash

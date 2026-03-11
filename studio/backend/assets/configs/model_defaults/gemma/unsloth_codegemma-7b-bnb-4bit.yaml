@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/codegemma-7b-bnb-4bit
 # Based on CodeGemma_(7B)-Conversational.ipynb
 # Also applies to: unsloth/codegemma-7b, google/codegemma-7b

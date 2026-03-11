@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
+# Copyright 2025 Unsloth AI
+
 # Model defaults for unsloth/Qwen3-Embedding-0.6B
 # Based on Qwen3_Embedding_(0_6B).py embedding notebook
 # Also applies to: unsloth/Qwen3-Embedding-4B
