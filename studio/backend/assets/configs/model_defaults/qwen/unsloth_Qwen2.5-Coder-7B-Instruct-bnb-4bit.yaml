@@ -1,5 +1,5 @@
-# SPDX-License-Identifier: AGPL-3.0-only - See /studio/LICENSE.AGPL-3.0
-# Copyright 2026-present the Unsloth AI Inc. team. All rights reserved.
+# SPDX-License-Identifier: AGPL-3.0-only
+# Copyright 2026-present the Unsloth AI Inc. team. All rights reserved. See /studio/LICENSE.AGPL-3.0
 
 # Model defaults for unsloth/Qwen2.5-Coder-7B-Instruct-bnb-4bit
 # Based on CodeForces-cot-Finetune_for_Reasoning_on_CodeForces.ipynb
