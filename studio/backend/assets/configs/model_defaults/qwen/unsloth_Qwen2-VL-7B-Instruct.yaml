@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-only
-# Copyright 2026-present the Unsloth AI Inc. team. All rights reserved. See /studio/LICENSE.AGPL-3.0
-
 # Model defaults for unsloth/Qwen2-VL-7B-Instruct
 # Based on Qwen2_VL_(7B)-Vision.ipynb 
 # Also applies to: unsloth/Qwen2-VL-7B-Instruct-unsloth-bnb-4bit, Qwen/Qwen2-VL-7B-Instruct, unsloth/Qwen2-VL-7B-Instruct-bnb-4bit
