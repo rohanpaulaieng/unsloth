@@ -15,7 +15,7 @@ authors = [
     {name = "Unsloth AI team"},
 ]
 maintainers = [
-    {name = "Daniel Han", email = "danielhanchen@gmail.com"},
+    {name = "Daniel Han", email = "daniel@unsloth.ai"},
     {name = "Michael Han", email = "info@unsloth.ai"},
 ]
 classifiers = [
