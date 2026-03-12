@@ -14,24 +14,38 @@ studio_app = typer.Typer(help = "Unsloth Studio commands.")
 
 STUDIO_HOME = Path.home() / ".unsloth" / "studio"
 
+# __file__ is cli/commands/studio.py — two parents up is the package root
+# (either site-packages or the repo root for editable installs).
+_PACKAGE_ROOT = Path(__file__).resolve().parent.parent.parent
+
+
+def _is_repo_root(path: Path) -> bool:
+    """Check if a directory looks like the repo root (actual git clone, not site-packages)."""
+    return (
+        (path / ".git").exists()
+        and (path / "pyproject.toml").is_file()
+        and (
+            (path / "studio" / "setup.sh").is_file()
+            or (path / "studio" / "setup.ps1").is_file()
+        )
+    )
+
 
 def _get_repo_root() -> Optional[Path]:
-    """Find the git clone repo root, or None if pure pip install."""
+    """Find the git clone repo root.
+
+    Used only by setup() — checks __file__ first (editable install),
+    then walks CWD parents (wheel install, user is inside the clone).
+    """
     # Check 1: __file__ is in the repo (editable install)
-    candidate = Path(__file__).resolve().parent.parent.parent
-    if (candidate / "pyproject.toml").is_file() and (
-        candidate / "studio" / "setup.sh"
-    ).is_file():
-        return candidate
-    # Check 2: CWD is the repo (non-editable wheel, running from repo dir)
-    cwd = Path.cwd()
-    if (cwd / "pyproject.toml").is_file() and (cwd / "studio" / "setup.sh").is_file():
-        return cwd
+    if _is_repo_root(_PACKAGE_ROOT):
+        return _PACKAGE_ROOT
+    # Check 2: CWD or any parent is the repo
+    cwd = Path.cwd().resolve()
+    for parent in (cwd, *cwd.parents):
+        if _is_repo_root(parent):
+            return parent
     return None
-
-
-def _is_git_clone() -> bool:
-    return _get_repo_root() is not None
 
 
 def _studio_venv_python() -> Optional[Path]:
@@ -44,40 +58,63 @@ def _studio_venv_python() -> Optional[Path]:
 
 
 def _find_run_py() -> Optional[Path]:
-    """Find studio/backend/run.py."""
-    # 1. Repo root (git clone / editable)
-    repo = _get_repo_root()
-    if repo:
-        run_py = repo / "studio" / "backend" / "run.py"
-        if run_py.is_file():
-            return run_py
-    # 2. Studio venv's site-packages
-    for match in (STUDIO_HOME / ".venv").glob(
-        "lib/python*/site-packages/studio/backend/run.py"
+    """Find studio/backend/run.py.
+
+    No CWD dependency — works from any directory.
+    Since studio/ is now a proper package (has __init__.py), it lives in
+    site-packages after pip install, right next to cli/.
+    """
+    # 1. Relative to __file__ (site-packages or editable repo root)
+    run_py = _PACKAGE_ROOT / "studio" / "backend" / "run.py"
+    if run_py.is_file():
+        return run_py
+    # 2. Studio venv's site-packages (Linux + Windows layouts)
+    for pattern in (
+        "lib/python*/site-packages/studio/backend/run.py",
+        "Lib/site-packages/studio/backend/run.py",
     ):
-        return match
-    # 3. Current package's site-packages
-    run_py = (
-        Path(__file__).resolve().parent.parent.parent / "studio" / "backend" / "run.py"
-    )
-    return run_py if run_py.is_file() else None
+        for match in (STUDIO_HOME / ".venv").glob(pattern):
+            return match
+    return None
 
 
 def _find_install_script() -> Optional[Path]:
-    """Find studio/install_python_stack.py."""
-    # 1. Repo root
-    repo = _get_repo_root()
-    if repo:
-        s = repo / "studio" / "install_python_stack.py"
-        if s.is_file():
-            return s
-    # 2. Relative to __file__ (in site-packages)
-    s = (
-        Path(__file__).resolve().parent.parent.parent
-        / "studio"
-        / "install_python_stack.py"
-    )
-    return s if s.is_file() else None
+    """Find studio/install_python_stack.py.
+
+    No CWD dependency — works from any directory.
+    """
+    # 1. Relative to __file__ (site-packages or editable repo root)
+    s = _PACKAGE_ROOT / "studio" / "install_python_stack.py"
+    if s.is_file():
+        return s
+    # 2. Studio venv's site-packages
+    for pattern in (
+        "lib/python*/site-packages/studio/install_python_stack.py",
+        "Lib/site-packages/studio/install_python_stack.py",
+    ):
+        for match in (STUDIO_HOME / ".venv").glob(pattern):
+            return match
+    return None
+
+
+def _find_setup_script() -> Optional[Path]:
+    """Find studio/setup.sh or studio/setup.ps1.
+
+    No CWD dependency — works from any directory.
+    """
+    name = "setup.ps1" if platform.system() == "Windows" else "setup.sh"
+    # 1. Relative to __file__ (site-packages or editable repo root)
+    s = _PACKAGE_ROOT / "studio" / name
+    if s.is_file():
+        return s
+    # 2. Studio venv's site-packages
+    for pattern in (
+        f"lib/python*/site-packages/studio/{name}",
+        f"Lib/site-packages/studio/{name}",
+    ):
+        for match in (STUDIO_HOME / ".venv").glob(pattern):
+            return match
+    return None
 
 
 # ── unsloth studio (server) ──────────────────────────────────────────
@@ -150,15 +187,16 @@ def studio_default(
 @studio_app.command()
 def setup():
     """Run one-time Studio environment setup."""
-    if _is_git_clone():
-        _dev_setup()
+    # If we're inside a git clone, use the full setup script (builds frontend, etc.)
+    repo = _get_repo_root()
+    if repo:
+        _dev_setup(repo)
     else:
         _pip_setup()
 
 
-def _dev_setup():
+def _dev_setup(repo_root: Path):
     """Git-clone: run setup.sh / setup.ps1."""
-    repo_root = _get_repo_root()
     studio_dir = repo_root / "studio"
     if platform.system() == "Windows":
         script = studio_dir / "setup.ps1"
